@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story </title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --success: #27ae60;
+            --bg-light: #f8f9fa;
+            --text-dark: #2d3436;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 50vh; /* Ukuran sedang sesuai permintaan */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://asset.kompas.com/crops/9z4fB_XJp2TcZVnc2DR7dFDhCP8=/0x0:0x0/750x500/data/photo/2021/06/22/60d192638e74d.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            font-weight: 300;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .btn-scroll {
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-scroll:hover {
+            transform: translateY(-3px);
+            background: #2980b9;
+        }
+
+        /* --- Map Container (Side by Side) --- */
+        .map-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 40px;
+            max-width: 1400px;
+            margin: -50px auto 0;
+        }
+
+        .map-card {
+            flex: 1;
+            min-width: 450px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .map-header {
+            padding: 15px 20px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .map-header h2 {
+            font-size: 1.1rem;
+            font-family: 'Plus Jakarta Sans';
+            color: var(--primary);
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: #ebf5ff;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .iframe-container {
+            height: 500px;
+            background: #e0e0e0;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- Analysis Section --- */
+        .analysis-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .analysis-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .analysis-box.alt {
+            border-left-color: var(--success);
+        }
+
+        .analysis-box h3 {
+            font-family: 'Plus Jakarta Sans';
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .analysis-box p {
+            color: #636e72;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: white;
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .map-card { min-width: 100%; }
+            .analysis-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>WebGIS Tata Ruang Kota Kediri 2024–2044</h1>
+        <p>Analisis Kesesuaian Penggunaan Lahan terhadap RTRW Kota Kediri Tahun 2024–2044.</p>
+    </header>
+
+    <main id="maps">
+        <div class="map-wrapper">
+            <section class="map-card">
+                <div class="map-header">
+                    <h2>Peta RTRW Kota Kediri 2D</h2>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="https://www.arcgis.com/apps/mapviewer/index.html?webmap=b5d0230b4e164be184ddfbd81b2d3c47"></iframe>
+                </div>
+            </section>
+
+            <section class="map-card">
+                <div class="map-header">
+                    <h2>Visualisasi Kota Kediri (3D)</h2>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="KOTA KEDIRI/index.html"></iframe>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <section class="analysis-container">
+        <div class="analysis-box">
+            <h3>Analisis Peta RTRW 2D</h3>
+            <p>
+               Analisis kesesuaian penggunaan lahan terhadap RTRW Kota Kediri Tahun 2024–2044 menunjukkan bahwa secara umum pemanfaatan ruang di kawasan perkotaan telah sesuai dengan arahan RTRW, terutama pada kawasan permukiman, perdagangan, dan jasa di pusat kota serta sepanjang koridor jalan utama. Namun, masih ditemukan ketidaksesuaian pada kawasan ruang terbuka hijau, sempadan sungai, dan kawasan lindung yang dimanfaatkan sebagai permukiman akibat tekanan pertumbuhan penduduk. Di wilayah pinggiran dan kawasan pengembangan baru, kesesuaian penggunaan lahan relatif lebih baik karena masih sejalan dengan rencana pengembangan. Secara keseluruhan, mayoritas penggunaan lahan telah sesuai RTRW, tetapi tetap diperlukan pengendalian dan pengawasan pemanfaatan ruang secara berkelanjutan.
+            </p>
+        </div>
+        <div class="analysis-box alt">
+            <h3>Analisis Visualisasi 3D</h3>
+            <p>
+                Berdasarkan visualisasi 3D Kesesuaian Penggunaan Lahan terhadap RTRW Kota Kediri Tahun 2024–2044, aspek koordinat spasial menunjukkan bahwa wilayah Kota Kediri berada pada rentang koordinat geografis sekitar 112°00’–112°10’ Bujur Timur dan 7°45’–7°55’ Lintang Selatan. Dalam tampilan 3D, pembagian zona penggunaan lahan dapat diamati secara jelas berdasarkan posisi koordinat tersebut, di mana wilayah pusat kota yang berada pada koordinat tengah cenderung menunjukkan intensitas pemanfaatan lahan terbangun yang lebih tinggi. Sementara itu, pada koordinat bagian utara dan selatan Kota Kediri, visualisasi 3D memperlihatkan pola penggunaan lahan yang lebih bervariasi dengan dominasi kawasan permukiman dan ruang terbuka. Perbedaan elevasi dan ketinggian bangunan yang muncul pada model 3D juga terdistribusi mengikuti posisi koordinat masing-masing zona RTRW, sehingga memudahkan identifikasi kesesuaian antara pemanfaatan lahan eksisting dengan rencana tata ruang. Secara keseluruhan, pendekatan berbasis koordinat dalam visualisasi 3D ini membantu menunjukkan keterkaitan spasial antara lokasi geografis, ketinggian, dan fungsi lahan sesuai arahan RTRW Kota Kediri 2024–2044.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 WEBGIS Tata Ruang Kota Kediri.</p>
+    </footer>
+
+    <script>
+        // Script sederhana untuk efek saat scroll
+        window.addEventListener('scroll', function() {
+            const cards = document.querySelectorAll('.map-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if(rect.top < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Inisialisasi posisi awal untuk animasi
+        document.querySelectorAll('.map-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.8s ease-out';
+        });
+    </script>
+</body>
+</html>
